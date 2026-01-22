@@ -41,6 +41,7 @@ public class MailSenderServiceImpl implements MailSenderService {
         Context context = new Context();
         context.setVariable("otp", request.getOtp());
         context.setVariable("expiry", timeout);
+        context.setVariable("recipient", request.getToMail());
 
         String template = request.getOtpType() == OtpType.ADMIN_VERIFICATION
                 ? "mail/admin-otp-verification.html"
