@@ -23,17 +23,17 @@ public class MailSenderController {
 
     @PostMapping("/admin-otp-verification")
     ApiResponse<Boolean> sendOtpToAdmin(@RequestBody SendOtpRequest request){
-        boolean valid = true;
+        boolean sent = true;
         try {
-            mailSenderService.sendOtpToAdmin(request);
+            mailSenderService.sendOtp(request);
         }catch (Exception e){
-            valid = false;
+            sent = false;
         }
 
         return ApiResponse.<Boolean>builder()
                 .errorCode(HttpStatus.OK.value())
                 .errorMessage(HttpStatus.OK.name())
-                .data(valid)
+                .data(sent)
                 .build();
     }
 }
