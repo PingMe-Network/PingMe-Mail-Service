@@ -2,6 +2,7 @@ package phatdang.ping_me.dto.request;
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+import phatdang.ping_me.model.constant.OtpType;
 
 /**
  * @author : user664dntp
@@ -17,4 +18,5 @@ import lombok.experimental.FieldDefaults;
 public class SendOtpRequest {
     String toMail;
     String otp;
+    OtpType otpType;
 }
