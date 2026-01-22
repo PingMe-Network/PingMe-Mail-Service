@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 import phatdang.ping_me.dto.request.SendOtpRequest;
+import phatdang.ping_me.model.constant.OtpType;
 import phatdang.ping_me.service.mail.MailSenderService;
 
 /**
@@ -34,13 +35,18 @@ public class MailSenderServiceImpl implements MailSenderService {
     @NonFinal
     @Value("${spring.mail.time-out}")
     String timeout;
+
     @Override
-    public void sendOtpToAdmin(SendOtpRequest request) {
+    public void sendOtp(SendOtpRequest request) {
         Context context = new Context();
         context.setVariable("otp", request.getOtp());
         context.setVariable("expiry", timeout);
 
-        String htmlContent = templateEngine.process("mail/admin-otp-verification.html", context);
+        String template = request.getOtpType() == OtpType.ADMIN_VERIFICATION
+                ? "mail/admin-otp-verification.html"
+                : "mail/forget-password-otp-verification";
+
+        String htmlContent = templateEngine.process(template, context);
 
         MimeMessage mime = javaMailSender.createMimeMessage();
         MimeMessageHelper helper = null;
