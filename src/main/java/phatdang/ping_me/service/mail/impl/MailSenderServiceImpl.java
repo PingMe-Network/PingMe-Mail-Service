@@ -33,7 +33,7 @@ public class MailSenderServiceImpl implements MailSenderService {
     String mailSender;
 
     @NonFinal
-    @Value("${spring.mail.time-out}")
+    @Value("${spring.mail.timeout}")
     String timeout;
 
     @Override
