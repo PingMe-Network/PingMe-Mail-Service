@@ -25,6 +25,7 @@ import phatdang.ping_me.service.mail.MailSenderService;
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class MailSenderServiceImpl implements MailSenderService {
+
     TemplateEngine templateEngine;
     JavaMailSender javaMailSender;
 
