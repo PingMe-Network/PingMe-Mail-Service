@@ -4,7 +4,10 @@ import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import phatdang.ping_me.dto.request.SendOtpRequest;
 import phatdang.ping_me.dto.response.ApiResponse;
 import phatdang.ping_me.service.mail.MailSenderService;
@@ -22,11 +25,11 @@ public class MailSenderController {
     MailSenderService mailSenderService;
 
     @PostMapping("/admin-otp-verification")
-    ApiResponse<Boolean> sendOtpToAdmin(@RequestBody SendOtpRequest request){
+    ApiResponse<Boolean> sendOtpToAdmin(@RequestBody SendOtpRequest request) {
         boolean sent = true;
         try {
             mailSenderService.sendOtp(request);
-        }catch (Exception e){
+        } catch (Exception e) {
             sent = false;
         }
 
