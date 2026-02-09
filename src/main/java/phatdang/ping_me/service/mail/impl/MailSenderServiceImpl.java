@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 import phatdang.ping_me.dto.request.SendOtpRequest;
-import phatdang.ping_me.model.constant.OtpType;
 import phatdang.ping_me.service.mail.MailSenderService;
 
 /**
@@ -44,9 +43,13 @@ public class MailSenderServiceImpl implements MailSenderService {
         context.setVariable("expiry", timeout);
         context.setVariable("recipient", request.getToMail());
 
-        String template = request.getOtpType() == OtpType.ADMIN_VERIFICATION
-                ? "mail/admin-otp-verification.html"
-                : "mail/forget-password-otp-verification";
+        String template = null;
+
+        switch (request.getOtpType()) {
+            case ADMIN_VERIFICATION -> template = "mail/admin-otp-verification.html";
+            case USER_FORGET_PASSWORD -> template = "mail/forget-password-otp-verification.html";
+            case ACCOUNT_ACTIVATION -> template = "mail/active-account-otp-verification.html";
+        }
 
         String htmlContent = templateEngine.process(template, context);
 
