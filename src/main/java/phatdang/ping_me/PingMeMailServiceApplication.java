@@ -6,8 +6,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class PingMeMailServiceApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(PingMeMailServiceApplication.class, args);
-	}
+    // Mail Service
+    public static void main(String[] args) {
+        SpringApplication.run(PingMeMailServiceApplication.class, args);
+    }
 
 }
