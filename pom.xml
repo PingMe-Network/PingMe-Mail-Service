@@ -12,10 +12,10 @@
     </parent>
 
     <groupId>phatdang.ping_me</groupId>
-    <artifactId>pingme-mail-service</artifactId>
+    <artifactId>pingme-notification-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>PingMe-Mail-Service</name>
-    <description>Mail Service for PingMe Network</description>
+    <name>PingMe-Notification-Service</name>
+    <description>Notification Service for PingMe Network</description>
     <packaging>jar</packaging>
 
     <licenses>
